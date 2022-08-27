@@ -1,3 +1,4 @@
+/* eslint-disable jsx-a11y/anchor-has-content */
 import React, { useContext, useState, useEffect } from 'react';
 import { Songs } from '../Context';
 
