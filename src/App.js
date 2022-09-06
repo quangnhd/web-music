@@ -2,10 +2,8 @@ import './App.css';
 import Navbar from './components/Navbar';
 import DetailSong from './components/DetailSong';
 import ListSong from './components/ListSong';
-import { Songs } from './Context';
 import Playing from './components/Playing';
-import { useEffect, useState } from 'react';
-import { getAll } from './api/song';
+import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { LOAD_REQUEST } from './store/reducer/song/songActionTypes';
 
@@ -17,7 +15,7 @@ function App() {
 
   useEffect(() => {
     dispatch({ type: LOAD_REQUEST })
-  }, [])
+  }, [dispatch])
 
   return (
     <div className="App">

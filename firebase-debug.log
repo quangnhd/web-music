@@ -1,0 +1,30 @@
+[debug] [2022-09-06T11:33:07.063Z] ----------------------------------------------------------------------
+[debug] [2022-09-06T11:33:07.066Z] Command:       C:\Program Files\nodejs\node.exe D:\IT FPT\web-music\node_modules\firebase-tools\lib\bin\firebase.js deploy
+[debug] [2022-09-06T11:33:07.067Z] CLI Version:   11.8.0
+[debug] [2022-09-06T11:33:07.067Z] Platform:      win32
+[debug] [2022-09-06T11:33:07.067Z] Node Version:  v16.15.1
+[debug] [2022-09-06T11:33:07.069Z] Time:          Tue Sep 06 2022 18:33:07 GMT+0700 (Indochina Time)
+[debug] [2022-09-06T11:33:07.069Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2022-09-06T11:33:07.148Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2022-09-06T11:33:07.148Z] > authorizing via signed-in user (quangnguyen10893@gmail.com)
+[debug] [2022-09-06T11:33:07.148Z] [iam] checking project web-music-a3551 for permissions ["firebase.projects.get","firebasehosting.sites.update"]
+[debug] [2022-09-06T11:33:07.151Z] >>> [apiv2][query] POST https://cloudresourcemanager.googleapis.com/v1/projects/web-music-a3551:testIamPermissions [none]
+[debug] [2022-09-06T11:33:07.152Z] >>> [apiv2][(partial)header] POST https://cloudresourcemanager.googleapis.com/v1/projects/web-music-a3551:testIamPermissions x-goog-quota-user=projects/web-music-a3551
+[debug] [2022-09-06T11:33:07.152Z] >>> [apiv2][body] POST https://cloudresourcemanager.googleapis.com/v1/projects/web-music-a3551:testIamPermissions {"permissions":["firebase.projects.get","firebasehosting.sites.update"]}
+[debug] [2022-09-06T11:33:08.590Z] <<< [apiv2][status] POST https://cloudresourcemanager.googleapis.com/v1/projects/web-music-a3551:testIamPermissions 200
+[debug] [2022-09-06T11:33:08.591Z] <<< [apiv2][body] POST https://cloudresourcemanager.googleapis.com/v1/projects/web-music-a3551:testIamPermissions {"permissions":["firebase.projects.get","firebasehosting.sites.update"]}
+[debug] [2022-09-06T11:33:08.594Z] >>> [apiv2][query] GET https://firebase.googleapis.com/v1beta1/projects/web-music-a3551 [none]
+[debug] [2022-09-06T11:33:09.154Z] <<< [apiv2][status] GET https://firebase.googleapis.com/v1beta1/projects/web-music-a3551 200
+[debug] [2022-09-06T11:33:09.155Z] <<< [apiv2][body] GET https://firebase.googleapis.com/v1beta1/projects/web-music-a3551 {"projectId":"web-music-a3551","projectNumber":"161707710181","displayName":"web music","name":"projects/web-music-a3551","resources":{"hostingSite":"web-music-a3551"},"state":"ACTIVE","etag":"1_e4c8cac1-0f51-43a0-90f1-79eef9bac642"}
+[info] 
+[info] === Deploying to 'web-music-a3551'...
+[info] 
+[info] i  deploying hosting 
+[debug] [2022-09-06T11:33:09.167Z] >>> [apiv2][query] GET https://firebase.googleapis.com/v1beta1/projects/web-music-a3551 [none]
+[debug] [2022-09-06T11:33:09.306Z] Failed to make request to https://firebase.googleapis.com/v1beta1/projects/web-music-a3551
+[debug] [2022-09-06T11:33:09.537Z] FirebaseError: Failed to make request to https://firebase.googleapis.com/v1beta1/projects/web-music-a3551
+    at RetryOperation._fn (D:\IT FPT\web-music\node_modules\firebase-tools\lib\apiv2.js:242:31)
+    at processTicksAndRejections (node:internal/process/task_queues:96:5)
+[error] 
+[error] Error: Failed to get Firebase project web-music-a3551. Please make sure the project exists and your account has permission to access it.
