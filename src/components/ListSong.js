@@ -1,19 +1,23 @@
 /* eslint-disable jsx-a11y/anchor-has-content */
 import React, { useContext, useState, useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import { Songs } from '../Context';
+import { SET_SONG } from '../store/reducer/song/songActionTypes';
 
 export default function ListSong() {
-  const { DataSongs, handleSetSong, song } = useContext(Songs);
+  const { songs, currentSong, } = useSelector(state => state.song)
+  const dispatch = useDispatch()
   const [idSong, setidSong] = useState(0);
-  console.log(DataSongs);
+
   const handlePlaySong = (idSong) => {
     setidSong(idSong)
-    handleSetSong(idSong)
+    dispatch({ type: SET_SONG, payload: idSong })
   };
+
   useEffect(() => {
-    setidSong(song.id)
-  }, [song])
-  
+    setidSong(currentSong.id)
+  }, [currentSong])
+
   return (
     <div className='col-span-2 overflow-y-scroll'>
       <table className='table-auto w-full'>
@@ -27,15 +31,15 @@ export default function ListSong() {
         </thead>
         <tbody>
           {
-            DataSongs.map((song, index) => (
-              <tr key={index} className={`bg-slate-800 h-12 text-gray-500 hover:bg-gray-600 ${idSong === song.id && 'bg-gray-600 text-teal-400'}`} 
-              onClick={() => handlePlaySong(song.id)}>
+            songs.map((song, index) => (
+              <tr key={index} className={`bg-slate-800 h-12 text-gray-500 hover:bg-gray-600 ${idSong === song.id && 'bg-gray-600 text-teal-400'}`}
+                onClick={() => handlePlaySong(song.id)}>
                 <td className='text-center'>{index + 1}</td>
                 <td>{song.name}</td>
                 <td className='text-center'>{song.author}</td>
                 <td className='text-center'>
                   <a href={song.url}></a>
-                    <i className='fa fa-download'></i> 
+                  <i className='fa fa-download'></i>
                 </td>
               </tr>
             ))
