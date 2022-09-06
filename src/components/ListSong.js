@@ -26,7 +26,7 @@ export default function ListSong() {
             <th className='w-[10%]'>#</th>
             <th className='text-left'>Title</th>
             <th className='w-[10%]'>Author</th>
-            <th className='w-[10%]'><i className='fa-solid fa-heart'></i></th>
+            <th className='w-[10%]'><i className='fa fa-heart'></i></th>
           </tr>
         </thead>
         <tbody>
@@ -39,7 +39,7 @@ export default function ListSong() {
                 <td className='text-center'>{song.author}</td>
                 <td className='text-center'>
                   <a href={song.url}></a>
-                  <i className='fa fa-download'></i>
+                  <i className='fa fa-heart'></i>
                 </td>
               </tr>
             ))
