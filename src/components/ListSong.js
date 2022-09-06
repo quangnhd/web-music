@@ -26,7 +26,7 @@ export default function ListSong() {
             <th className='w-[10%]'>#</th>
             <th className='text-left'>Title</th>
             <th className='w-[10%]'>Author</th>
-            <th className='w-[10%]'><i className='fa fa-download'></i></th>
+            <th className='w-[10%]'><i className='fa-solid fa-heart'></i></th>
           </tr>
         </thead>
         <tbody>
