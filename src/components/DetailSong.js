@@ -1,7 +1,7 @@
 import React from 'react'
 import { useSelector } from 'react-redux'
 
-export default function DetailSong() {
+function DetailSong() {
   const {
     currentSong,
   } = useSelector(state => state.song)
@@ -19,3 +19,5 @@ export default function DetailSong() {
     </div>
   )
 }
+
+export default DetailSong

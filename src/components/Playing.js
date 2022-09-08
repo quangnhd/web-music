@@ -1,10 +1,10 @@
-import React from 'react';
-import AudioPlayer from 'react-h5-audio-player';
-import 'react-h5-audio-player/lib/styles.css';
-import { useDispatch, useSelector } from 'react-redux';
-import { SET_SONG } from '../store/reducer/song/songActionTypes';
+import React from 'react'
+import AudioPlayer from 'react-h5-audio-player'
+import 'react-h5-audio-player/lib/styles.css'
+import { useDispatch, useSelector } from 'react-redux'
+import { SET_SONG } from '../store/reducer/song/songActionTypes'
 
-export default function Playing() {
+function Playing() {
   const { currentSong } = useSelector(state => state.song)
   const dispatch = useDispatch()
 
@@ -29,3 +29,5 @@ export default function Playing() {
     </div>
   )
 }
+
+export default Playing

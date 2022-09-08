@@ -1,38 +1,37 @@
-import './App.css';
-import Navbar from './components/Navbar';
-import DetailSong from './components/DetailSong';
-import ListSong from './components/ListSong';
-import Playing from './components/Playing';
-import { useEffect } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-import { LOAD_REQUEST } from './store/reducer/song/songActionTypes';
+import './App.css'
+import Navbar from './components/Navbar'
+import Homepage from './page/Homepage'
+import Login from './page/Login/Login'
+import Register from './page/Register/Register'
+import Setting from './page/Setting/Setting'
+import { Route, Routes } from 'react-router'
+import { useDispatch, useSelector } from 'react-redux'
+import Cookies from 'universal-cookie';
+import { RESTORE_USER } from './store/reducer/user/userActionTypes'
 
+const cookies = new Cookies();
 function App() {
-  const { songs,
-    currentSong,
-  } = useSelector(state => state.song)
+  const { user } = useSelector(state => state.user)
   const dispatch = useDispatch()
-
-  useEffect(() => {
-    dispatch({ type: LOAD_REQUEST })
-  }, [dispatch])
-
+  if (!user) {
+    const prevUser = cookies.get('user');
+    const prevToken = cookies.get('token');
+    if (prevUser && prevToken) {
+      dispatch({ type: RESTORE_USER, payload: prevUser });
+    }
+  }
   return (
     <div className="App">
-      {songs && currentSong ? (
-        <>
-          <Navbar />
-          <div className='grid grid-cols-3 bg-slate-700 h-screen-navbar-player overflow-hidden'>
-            {/* span 1 */}
-            <DetailSong />
-            {/* span 2 */}
-            <ListSong />
-          </div>
-          <Playing />
-        </>
-      ) : null}
+      <Navbar />
+      <Routes>
+        <Route index element={<Homepage />} />
+        <Route path="/login" element={<Login />} />
+        <Route path="/register" element={<Register />} />
+        <Route path="/setting" element={<Setting />} />
+        <Route path="*" element={<Homepage />} />
+      </Routes>
     </div>
   );
 }
 
-export default App;
+export default App

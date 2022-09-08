@@ -3,3 +3,15 @@ export const LOAD_SUCCESS = "LOAD_SUCCESS";
 export const LOAD_FAILURE = "LOAD_FAILURE";
 
 export const SET_SONG = "SET_SONG";
+
+export const LOAD_LIKE_REQUEST = "LOAD_LIKE_REQUEST";
+export const LOAD_LIKE_SUCCESS = "LOAD_LIKE_SUCCESS";
+export const LOAD_LIKE_FAILURE = "LOAD_LIKE_FAILURE";
+
+export const LIKE_REQUEST = "LIKE_REQUEST";
+export const LIKE_SUCCESS = "LIKE_SUCCESS";
+export const LIKE_FAILURE = "LIKE_FAILURE";
+
+export const UNLIKE_REQUEST = "UNLIKE_REQUEST";
+export const UNLIKE_SUCCESS = "UNLIKE_SUCCESS";
+export const UNLIKE_FAILURE = "UNLIKE_FAILURE";

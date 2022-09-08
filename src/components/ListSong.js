@@ -1,21 +1,35 @@
 /* eslint-disable jsx-a11y/anchor-has-content */
 import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { SET_SONG } from '../store/reducer/song/songActionTypes';
+import { LIKE_REQUEST, LIKE_SUCCESS, LOAD_LIKE_REQUEST, SET_SONG, UNLIKE_REQUEST } from '../store/reducer/song/songActionTypes';
 
-export default function ListSong() {
+function ListSong() {
   const { songs, currentSong, } = useSelector(state => state.song)
+  const { user } = useSelector(state => state.user)
   const dispatch = useDispatch()
   const [idSong, setidSong] = useState(0);
-
+  console.log(songs)
   const handlePlaySong = (idSong) => {
     setidSong(idSong)
     dispatch({ type: SET_SONG, payload: idSong })
   };
 
   useEffect(() => {
+    if (user) {
+      dispatch({ type: LOAD_LIKE_REQUEST, payload: user.id })
+    }
     setidSong(currentSong.id)
-  }, [currentSong])
+  }, [])
+
+  const handleLikeClick = (song) => {
+    return () => {
+      if (song.like) {
+        dispatch({ type: UNLIKE_REQUEST, payload: song.like })
+      } else {
+        dispatch({ type: LIKE_REQUEST, payload: { userId: user.id, songId: song.id } })
+      }
+    }
+  }
 
   return (
     <div className='col-span-2 overflow-y-scroll'>
@@ -36,7 +50,7 @@ export default function ListSong() {
                 <td className='text-center'>{index + 1}</td>
                 <td>{song.name}</td>
                 <td className='text-center'>{song.author}</td>
-                <td className='text-center'>
+                <td className='text-center' style={{ cursor: "pointer", color: song.like ? "red" : "white" }} onClick={handleLikeClick(song)}>
                   <a href={song.url}></a>
                   <i className='fa fa-heart'></i>
                 </td>
@@ -48,3 +62,5 @@ export default function ListSong() {
     </div>
   )
 }
+
+export default ListSong
