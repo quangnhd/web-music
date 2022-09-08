@@ -7,10 +7,8 @@ function ListSong() {
   const { songs, currentSong, } = useSelector(state => state.song)
   const { user } = useSelector(state => state.user)
   const dispatch = useDispatch()
-  const [idSong, setidSong] = useState(0);
-  console.log(songs)
+
   const handlePlaySong = (idSong) => {
-    setidSong(idSong)
     dispatch({ type: SET_SONG, payload: idSong })
   };
 
@@ -18,8 +16,7 @@ function ListSong() {
     if (user) {
       dispatch({ type: LOAD_LIKE_REQUEST, payload: user.id })
     }
-    setidSong(currentSong.id)
-  }, [currentSong.id, dispatch, user])
+  }, [dispatch, user])
 
   const handleLikeClick = (song) => {
     return () => {
@@ -45,7 +42,7 @@ function ListSong() {
         <tbody>
           {
             songs.map((song, index) => (
-              <tr key={index} className={`bg-slate-800 h-12 text-gray-500 hover:bg-gray-600 ${idSong === song.id && 'bg-gray-600 text-teal-400'}`}
+              <tr key={index} className={`bg-slate-800 h-12 text-gray-500 hover:bg-gray-600 ${currentSong.id === song.id && 'bg-gray-600 text-teal-400'}`}
                 onClick={() => handlePlaySong(song.id)}>
                 <td className='text-center'>{index + 1}</td>
                 <td>{song.name}</td>
