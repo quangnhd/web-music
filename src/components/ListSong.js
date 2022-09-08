@@ -1,7 +1,7 @@
 /* eslint-disable jsx-a11y/anchor-has-content */
 import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { LIKE_REQUEST, LIKE_SUCCESS, LOAD_LIKE_REQUEST, SET_SONG, UNLIKE_REQUEST } from '../store/reducer/song/songActionTypes';
+import { LIKE_REQUEST, LOAD_LIKE_REQUEST, SET_SONG, UNLIKE_REQUEST } from '../store/reducer/song/songActionTypes';
 
 function ListSong() {
   const { songs, currentSong, } = useSelector(state => state.song)
@@ -19,7 +19,7 @@ function ListSong() {
       dispatch({ type: LOAD_LIKE_REQUEST, payload: user.id })
     }
     setidSong(currentSong.id)
-  }, [])
+  }, [currentSong.id, dispatch, user])
 
   const handleLikeClick = (song) => {
     return () => {

@@ -2,7 +2,6 @@ import { Button, Container } from '@mui/material';
 import { Stack } from '@mui/system';
 import React from 'react';
 import { useDispatch } from 'react-redux';
-import { LOAD_REQUEST } from '../../store/reducer/song/songActionTypes';
 import { LOGOUT } from '../../store/reducer/user/userActionTypes';
 function Setting() {
   const dispatch = useDispatch();
